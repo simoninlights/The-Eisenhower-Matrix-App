@@ -7,7 +7,8 @@ class View {
 
         // The title of the app
         this.title = this.createElement('h1');
-        this.title.textContent = 'Todos';
+        this.title.className = 'mainTitle';
+        this.title.textContent = 'The Eisenhower Matrix';
 
         // The form with a [type="text"] input and a submit button
         this.form = this.createElement('form');
