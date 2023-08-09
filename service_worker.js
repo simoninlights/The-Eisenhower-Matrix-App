@@ -74,7 +74,7 @@ async function networkFirst(request) {
         //we're trying to get the dat from cache
         const cached = cache.match(request);
         //If we don't have anything in cache we're showing the static html file with the error
-        return cached ?? await caches.match('offline/offline.html');
+        return cached ?? await caches.match('offline.html');
     }
 
 
