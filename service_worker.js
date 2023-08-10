@@ -13,6 +13,8 @@ const assetUrls = [
     'service_worker.js',
     'favicon.ico',
     'README.md',
+    'offline/offline.html',
+    'offline/offline.css'
 ]
 
 self.addEventListener('install', async event => {
@@ -31,7 +33,12 @@ self.addEventListener('install', async event => {
 
 self.addEventListener('activate', async event => {
     const cacheNames = await caches.keys();
-    await Promise.all(cacheNames.filter(name => staticCacheName).map(name => caches.delete(name)));
+    await Promise.all(
+        cacheNames
+        .filter(name => name !== staticCacheName)
+        .filter(name => name !== dynamicCacheName)
+        .map(name => caches.delete(name))
+    )
 });
 
 
@@ -74,7 +81,7 @@ async function networkFirst(request) {
         //we're trying to get the dat from cache
         const cached = cache.match(request);
         //If we don't have anything in cache we're showing the static html file with the error
-        return cached ?? await caches.match('offline.html');
+        return cached ?? await caches.match('/offline/offline.html');
     }
 
 

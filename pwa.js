@@ -9,6 +9,4 @@ try {
     console.error('Service worker registration failure');
 }
 
-
-
 })
