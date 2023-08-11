@@ -50,9 +50,9 @@ self.addEventListener('fetch', event => {
 
     const url = new URL(request.url);
     if (url.origin === location.origin) {
-        event.respondWith(cacheFirst(request));
-    } else {
         event.respondWith(networkFirst(request));
+    } else {
+        event.respondWith(cacheFirst(request));
     }
 })
 
