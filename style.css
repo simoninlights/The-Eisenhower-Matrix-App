@@ -10,7 +10,17 @@ html {
   color: #444;
 }
 
+main {
+}
+
 #root {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-row-gap: 4rem;
+  grid-column-gap: 4rem;
   max-width: 450px;
   margin: 2rem auto;
   padding: 0 1rem;

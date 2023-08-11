@@ -6,29 +6,85 @@ class View {
         this.app = this.getElement('#root');
 
         // The title of the app
+        this.container = this.createElement('div');
+        this.container2 = this.createElement('div');
+        this.container3 = this.createElement('div');
+        this.container4 = this.createElement('div');
+
         this.title = this.createElement('h1');
         this.title.className = 'mainTitle';
-        this.title.textContent = 'The Eisenhower Matrix';
+        this.title.textContent = 'DO';
+
+        this.title2 = this.createElement('h1');
+        this.title2.className = 'mainTitle';
+        this.title2.textContent = 'DECIDE';
+
+        this.title3 = this.createElement('h1');
+        this.title3.className = 'mainTitle';
+        this.title3.textContent = 'DELEGATE';
+
+        this.title4 = this.createElement('h1');
+        this.title4.className = 'mainTitle';
+        this.title4.textContent = 'DELETE';
 
         // The form with a [type="text"] input and a submit button
         this.form = this.createElement('form');
+        this.form2 = this.createElement('form');
+        this.form3 = this.createElement('form');
+        this.form4 = this.createElement('form');
 
         this.input = this.createElement('input');
         this.input.type = 'text';
-        this.input.placeholder = 'Add todo';
+        this.input.placeholder = 'Do it now.';
         this.input.name = 'todo';
+
+        this.input2 = this.createElement('input');
+        this.input2.type = 'text';
+        this.input2.placeholder = 'Schedule a time to do it';
+        this.input2.name = 'todo';
+
+        this.input3 = this.createElement('input');
+        this.input3.type = 'text';
+        this.input3.placeholder = 'Who can do it for you?';
+        this.input3.name = 'todo';
+
+        this.input4 = this.createElement('input');
+        this.input4.type = 'text';
+        this.input4.placeholder = 'Eliminate it';
+        this.input4.name = 'todo';
 
         this.submitButton = this.createElement('button');
         this.submitButton.textContent = 'Submit';
 
+        this.submitButton2 = this.createElement('button');
+        this.submitButton2.textContent = 'Submit';
+
+        this.submitButton3 = this.createElement('button');
+        this.submitButton3.textContent = 'Submit';
+
+        this.submitButton4 = this.createElement('button');
+        this.submitButton4.textContent = 'Submit';
+
         // The visual representation of the todo list
         this.todoList = this.createElement('ul', 'todo-list');
+        this.todoList2 = this.createElement('ul', 'todo-list');
+        this.todoList3 = this.createElement('ul', 'todo-list');
+        this.todoList4 = this.createElement('ul', 'todo-list');
 
         // Append the input and submit button to the form
         this.form.append(this.input, this.submitButton);
+        this.form2.append(this.input2, this.submitButton2);
+        this.form3.append(this.input3, this.submitButton3);
+        this.form4.append(this.input4, this.submitButton4);
+
+        this.container.append(this.title, this.form, this.todoList)
+        this.container2.append(this.title2, this.form2, this.todoList2)
+        this.container3.append(this.title3, this.form3, this.todoList3)
+        this.container4.append(this.title4, this.form4, this.todoList4)
 
         // Append the title, form, and todo list to the app
-        this.app.append(this.title, this.form, this.todoList);
+        this.app.append(this.container, this.container2, this.container3, this.container4 );
+        
 
         //Editing the text
         this._temporaryTodoText;
@@ -44,11 +100,26 @@ class View {
                 this._temporaryTodoText = event.target.innerText;
             }
         })
+
+        this.todoList2.addEventListener('input', event => {
+            if (event.target.className === 'editable') {
+                this._temporaryTodoText = event.target.innerText;
+            }
+        })
     }
 
     //Send the completed value to the model
     bindEditTodo(handler) {
         this.todoList.addEventListener('focusout', event => {
+            if (this._temporaryTodoText) {
+                const id = parseInt(event.target.parentElement.id);
+
+                handler(id, this._temporaryTodoText);
+                this._temporaryTodoText = ''
+            }
+        })
+
+        this.todoList2.addEventListener('focusout', event => {
             if (this._temporaryTodoText) {
                 const id = parseInt(event.target.parentElement.id);
 
@@ -92,6 +163,10 @@ class View {
         //Delete all nodes
         while (this.todoList.firstChild) {
             this.todoList.removeChild(this.todoList.firstChild);
+        }
+
+        while (this.todoList2.firstChild) {
+            this.todoList2.removeChild(this.todoList2.firstChild);
         }
 
         //Showing default message
