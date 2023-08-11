@@ -10,7 +10,7 @@ html {
     color: #444;
   }
 
-#root {
+main {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -18,7 +18,7 @@ html {
     align-items: center;
 }
 
-.offTitle {
+.offlinePageTitle {
     background: #007bff;
     color: white;
     border: 100px solid #007bff;
