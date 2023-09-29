@@ -54,16 +54,16 @@ class View {
         this.input4.name = 'todo';
 
         this.submitButton = this.createElement('button');
-        this.submitButton.textContent = 'Submit';
+        this.submitButton.textContent = 'Create';
 
         this.submitButton2 = this.createElement('button');
-        this.submitButton2.textContent = 'Submit';
+        this.submitButton2.textContent = 'Create';
 
         this.submitButton3 = this.createElement('button');
-        this.submitButton3.textContent = 'Submit';
+        this.submitButton3.textContent = 'Create';
 
         this.submitButton4 = this.createElement('button');
-        this.submitButton4.textContent = 'Submit';
+        this.submitButton4.textContent = 'Create';
 
         // The visual representation of the todo list
         this.todoList = this.createElement('ul', 'todo-list');
@@ -169,11 +169,19 @@ class View {
             this.todoList2.removeChild(this.todoList2.firstChild);
         }
 
+        while (this.todoList3.firstChild) {
+            this.todoList3.removeChild(this.todoList3.firstChild);
+        }
+
+        while (this.todoList3.firstChild) {
+            this.todoList3.removeChild(this.todoList3.firstChild);
+        }
+
         //Showing default message
         if (todos.length === 0) {
             const p = this.createElement('p');
             p.textContent = 'Nothing to do! Add a task?';
-            this.todoList.append(p);
+            this.todoList.append(p)
         }   else {
             // Create todo items nodes for each todo in state
             todos.forEach(todo => {
@@ -206,6 +214,120 @@ class View {
 
                 //Append nodes to the todo list
                 this.todoList.append(li);
+            })
+        }
+        if (todos.length === 0) {
+            const p = this.createElement('p');
+            p.textContent = 'Nothing to do! Add a task?';
+            this.todoList2.append(p)
+        }   else {
+            // Create todo items nodes for each todo in state
+            todos.forEach(todo => {
+                const li = this.createElement('li');
+                li.id = todo.id;
+
+                //Each todo item will have a checkbox you can toggle
+                const checkbox = this.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = todo.complete;
+
+                //The todo items text will be in a contenteditable span
+                const span = this.createElement('span');
+                span.contentEditable = true;
+                span.classList.add('editable');
+
+                //If the todo is complete, it will havre a strikethrough
+                if (todo.complete) {
+                    const strike = this.createElement('s');
+                    strike.textContent = todo.text;
+                    span.append(strike);
+                } else {
+                    span.textContent = todo.text;
+                }
+
+                //The todos will also have a delete button
+                const deleteButton = this.createElement('button', 'delete');
+                deleteButton.textContent = 'Delete';
+                li.append(checkbox, span, deleteButton);
+
+                //Append nodes to the todo list
+                this.todoList2.append(li);
+            })
+        }
+        if (todos.length === 0) {
+            const p = this.createElement('p');
+            p.textContent = 'Nothing to do! Add a task?';
+            this.todoList3.append(p)
+        }   else {
+            // Create todo items nodes for each todo in state
+            todos.forEach(todo => {
+                const li = this.createElement('li');
+                li.id = todo.id;
+
+                //Each todo item will have a checkbox you can toggle
+                const checkbox = this.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = todo.complete;
+
+                //The todo items text will be in a contenteditable span
+                const span = this.createElement('span');
+                span.contentEditable = true;
+                span.classList.add('editable');
+
+                //If the todo is complete, it will havre a strikethrough
+                if (todo.complete) {
+                    const strike = this.createElement('s');
+                    strike.textContent = todo.text;
+                    span.append(strike);
+                } else {
+                    span.textContent = todo.text;
+                }
+
+                //The todos will also have a delete button
+                const deleteButton = this.createElement('button', 'delete');
+                deleteButton.textContent = 'Delete';
+                li.append(checkbox, span, deleteButton);
+
+                //Append nodes to the todo list
+                this.todoList3.append(li);
+            })
+        }
+        if (todos.length === 0) {
+            const p = this.createElement('p');
+            p.textContent = 'Nothing to do! Add a task?';
+            this.todoList4.append(p)
+        }   else {
+            // Create todo items nodes for each todo in state
+            todos.forEach(todo => {
+                const li = this.createElement('li');
+                li.id = todo.id;
+
+                //Each todo item will have a checkbox you can toggle
+                const checkbox = this.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = todo.complete;
+
+                //The todo items text will be in a contenteditable span
+                const span = this.createElement('span');
+                span.contentEditable = true;
+                span.classList.add('editable');
+
+                //If the todo is complete, it will havre a strikethrough
+                if (todo.complete) {
+                    const strike = this.createElement('s');
+                    strike.textContent = todo.text;
+                    span.append(strike);
+                } else {
+                    span.textContent = todo.text;
+                }
+
+                //The todos will also have a delete button
+                const deleteButton = this.createElement('button', 'delete');
+                deleteButton.textContent = 'Delete';
+                li.append(checkbox, span, deleteButton);
+
+                //Append nodes to the todo list
+                this.todoList4.append(li);
             })
         }
     }

@@ -2,6 +2,6 @@
 
 <img src="/AppImages/windows11/Square44x44Logo.targetsize-96.png" alt="readme.md-logo">
 
-## Web Application for handling the tasks using the Eisenhower Matrix approach.
+## Experience an innovative time-management application based on MVC, OOP, and PWA principles (Using only html, css and native javaScript)
 
 
