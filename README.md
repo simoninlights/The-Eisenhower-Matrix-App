@@ -2,6 +2,6 @@
 
 
 
-## Html, CSS, Native JavaScript application (OOP, MVC, PWA concepts)
+## Web Application for handling the tasks using the Eisenhower Matrix approach.
 
-Web Application for handling the tasks using the Eisenhower Matrix approach.
+
